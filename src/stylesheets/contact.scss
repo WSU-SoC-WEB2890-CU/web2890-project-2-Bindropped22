@@ -1,0 +1,318 @@
+@import "bootstrap/scss/bootstrap.scss";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+// Variables
+$primary-color: #FFD700;
+$secondary-color: #1C1C1C;
+$background-color: #000000;
+$text-color-light: #FFFFFF;
+$text-color-dark: #333333;
+$accent-color: #FF4500; // Add an accent color for interactive elements like focus/hover
+
+// Font Families
+$font-primary: 'Fredoka', sans-serif;
+$font-secondary: 'Playwrite DE Grund', serif;
+
+// Global Styles
+body {
+  font-family: $font-primary;
+  background-color: $background-color;
+  color: $text-color-light;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.navbar {
+  background-color: $secondary-color;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    a {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 60px;
+        height: auto;
+      }
+    }
+  }
+
+  .nav-links {
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 1.5rem;
+      padding: 0;
+      margin: 0;
+
+      li {
+        a {
+          font-family: $font-primary;
+          font-size: 1rem;
+          color: $text-color-light;
+          text-decoration: none;
+          padding: 0.5rem 1rem;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 0.4rem;
+    cursor: pointer;
+
+    span {
+      display: block;
+      width: 30px;
+      height: 3px;
+      background-color: $text-color-light;
+      transition: 0.3s;
+    }
+
+    &.active span:nth-child(1) {
+      transform: rotate(45deg) translateY(8px);
+    }
+
+    &.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    &.active span:nth-child(3) {
+      transform: rotate(-45deg) translateY(-8px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: $secondary-color;
+      width: 100%;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+
+      &.open {
+        transform: translateX(0);
+      }
+
+      ul {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+
+    .hamburger {
+      display: flex;
+    }
+  }
+}
+
+// Contact Section Styles
+.contact-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, $secondary-color 0%, $background-color 100%);
+  color: $text-color-light;
+  text-align: center;
+  overflow: hidden;
+
+  h2 {
+    font-size: 3rem;
+    color: $primary-color;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeIn 1s ease-out;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    animation: fadeIn 1.5s ease-out;
+  }
+
+  .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      label {
+        font-size: 1rem;
+        margin-bottom: 8px;
+        animation: fadeIn 2s ease-out;
+      }
+
+      input, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid $text-color-light;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: $text-color-light;
+        font-family: $font-primary;
+        transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          background-color: rgba(255, 255, 255, 0.2);
+          transform: scale(1.02); // Small zoom effect on focus
+        }
+      }
+
+      textarea {
+        resize: vertical;
+      }
+    }
+
+    .submit-btn {
+      background-color: $primary-color;
+      color: $text-color-dark;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+        color: $text-color-light;
+        transform: translateY(-3px); // Subtle lift effect on hover
+      }
+    }
+  }
+}
+
+// Fade-in animation
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 2rem 1rem;
+
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+// Footer Styles
+footer {
+  background-color: $secondary-color;
+  color: $text-color-light;
+  padding: 3rem 2rem;
+  text-align: center;
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+
+      a {
+        margin: 0 1rem;
+        font-size: 1.5rem;
+        color: $primary-color;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: lighten($primary-color, 10%);
+        }
+      }
+    }
+
+    .footer-lists {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          margin-bottom: 0.75rem;
+          font-size: 1rem;
+
+          a {
+            color: $text-color-light;
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+
+    .footer-copyright {
+      margin-top: 2rem;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-lists {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footer-socials {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  footer {
+    padding: 2rem 1rem;
+  }
+}

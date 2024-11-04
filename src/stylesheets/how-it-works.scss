@@ -1,0 +1,308 @@
+@import 'main';
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+// Variables
+$primary-color: #FFD700;
+$secondary-color: #1C1C1C;
+$background-color: #000000;
+$text-color-light: #FFFFFF;
+$text-color-dark: #333333;
+
+// Font Families
+$font-primary: 'Fredoka', sans-serif;
+$font-secondary: 'Playwrite DE Grund', serif;
+
+/* General styling */
+.how-it-works-section {
+  padding: 40px 20px;
+  background-image: url(../images/stock-bg.jpg);
+  background-size: contain; /* Ensures the entire image fits within the section */
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: auto; /* Allows the height to adjust based on the image */
+  padding: 50px 0;
+  text-align: center;
+  font-family: $font-primary;
+
+  h2 {
+    font-size: 3rem;
+    color: #ffc107;
+    margin-bottom: 40px;
+    text-decoration: underline;
+  }
+
+  .steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .card {
+    background-color: rgba(255, 215, 0, 0.75);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    max-width: 300px;
+    padding: 1.5rem;
+    opacity: 0;
+    transform: translateY(50px); /* Start slightly below for animation */
+
+    i {
+      font-size: 2rem;
+      color: $text-color-dark;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      color: $text-color-dark;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: black;
+    }
+
+    &:hover {
+      transform: translateY(-10px); /* Lift effect */
+    }
+  }
+
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .step:nth-child(1) {
+    animation: slideIn 0.8s ease forwards;
+    animation-delay: 0.2s;
+  }
+
+  .step:nth-child(2) {
+    animation: slideIn 0.8s ease forwards;
+    animation-delay: 0.4s;
+  }
+
+  .step:nth-child(3) {
+    animation: slideIn 0.8s ease forwards;
+    animation-delay: 0.6s;
+  }
+
+  .step:nth-child(4) {
+    animation: slideIn 0.8s ease forwards;
+    animation-delay: 0.8s;
+  }
+
+  .step:nth-child(5) {
+    animation: slideIn 1s ease forwards;
+    animation-delay: 1s;
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    .steps {
+      flex-direction: column;
+    }
+
+    .card {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+// Navigation Bar Styles
+.navbar {
+  background-color: $secondary-color;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    a {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 60px;
+        height: auto;
+      }
+    }
+  }
+
+  .nav-links {
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      gap: 1.5rem;
+      padding: 0;
+      margin: 0;
+
+      li {
+        a {
+          font-family: $font-primary;
+          font-size: 1rem;
+          color: $text-color-light;
+          text-decoration: none;
+          padding: 0.5rem 1rem;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 0.4rem;
+    cursor: pointer;
+
+    span {
+      display: block;
+      width: 30px;
+      height: 3px;
+      background-color: $text-color-light;
+      transition: 0.3s;
+    }
+
+    &.active span:nth-child(1) {
+      transform: rotate(45deg) translateY(8px);
+    }
+
+    &.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    &.active span:nth-child(3) {
+      transform: rotate(-45deg) translateY(-8px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: $secondary-color;
+      width: 100%;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+
+      &.open {
+        transform: translateX(0);
+      }
+
+      ul {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+
+    .hamburger {
+      display: flex;
+    }
+  }
+}
+
+// Footer Styles
+.footer {
+  background-color: $secondary-color;
+  color: $text-color-light;
+  padding: 3rem 2rem;
+  text-align: center;
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+
+      a {
+        margin: 0 1rem;
+        font-size: 1.5rem;
+        color: $primary-color;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: lighten($primary-color, 10%);
+        }
+      }
+    }
+
+    .footer-lists {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          margin-bottom: 0.75rem;
+          font-size: 1rem;
+
+          a {
+            color: $text-color-light;
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-lists {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .footer-socials {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    footer {
+      padding: 2rem 1rem;
+    }
+  }
+}
