@@ -13,6 +13,13 @@ $text-color-dark: #333333; // Dark Gray
 $font-primary: 'Fredoka', sans-serif;
 $font-secondary: 'Playwrite DE Grund', serif;
 
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; // Prevents horizontal scrolling
+}
 // Global Styles
 body {
   background: linear-gradient(135deg, $background-color 0%, $primary-color 50%, $background-color 100%);
